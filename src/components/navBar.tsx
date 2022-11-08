@@ -2,7 +2,7 @@ import { useState } from "react";
 import { MenuOutlined } from "@ant-design/icons";
 import { Button, Drawer } from "antd";
 import Link from "next/link";
-import Image from 'next/image'
+import Image from "next/legacy/image";
 type Props = {
   menuShow: boolean;
   setMenuShow: any;
