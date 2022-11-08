@@ -1,8 +1,8 @@
-import { userStore } from '@/store/modules/user'
+// import { userStore } from '@/store/modules/user'
 
 export function checkStatus(status: number, message: string): void {
   let errMessage = ''
-  const user = userStore()
+  // const user = userStore()
   switch (status) {
     case 400:
       errMessage = `${message}`
@@ -11,7 +11,7 @@ export function checkStatus(status: number, message: string): void {
     // Jump to the login page if not logged in, and carry the path of the current page
     // Return to the current page after successful login. This step needs to be operated on the login page.
     case 401:
-      user.logout()
+      // user.logout()
       errMessage = '登录过期，请重新登录'
       break
     case 403:
@@ -51,6 +51,7 @@ export function checkStatus(status: number, message: string): void {
   }
 
   if (errMessage) {
-    window.$message.error(errMessage)
+    alert(errMessage)
+    // window.$message.error(errMessage)
   }
 }

@@ -1,7 +1,6 @@
 import type { AxiosRequestConfig, AxiosRequestHeaders } from 'axios'
 import axios from 'axios'
-import { userStore } from '@/store/modules/user'
-import { checkStatus } from '@/utils/checkStatus'
+import { checkStatus } from '@/utils/http/checkStatus'
 
 const instance = axios.create({
   baseURL: '',
@@ -9,13 +8,12 @@ const instance = axios.create({
 })
 instance.interceptors.request.use(
   (config: AxiosRequestConfig) => {
-    const store = userStore()
-    if (store.token) {
-      // 判断是否存在token，如果存在的话，则每个http header都加上token
-      ;(
-        config.headers as AxiosRequestHeaders
-      ).Authorization = `Bearer ${store.token}`
-    }
+    // if (store.token) {
+    //   // 判断是否存在token，如果存在的话，则每个http header都加上token
+    //   ;(
+    //     config.headers as AxiosRequestHeaders
+    //   ).Authorization = `Bearer ${store.token}`
+    // }
 
     return config
   },
