@@ -8,7 +8,7 @@ import { NavBar } from "@/components/navBar";
 import {PostList} from "@/components/postList";
 
 export async function getStaticProps() {
-  const allPostsData = await fetch("http://api.pengyang.plus/webApi/post").then(
+  const allPostsData = await fetch("https://api.pengyang.plus/webApi/post").then(
     (r) => r.json()
   );
     console.log(allPostsData)
