@@ -2,7 +2,7 @@ import { useState } from "react";
 import { MenuOutlined } from "@ant-design/icons";
 import { Button, Drawer } from "antd";
 import Link from "next/link";
-import Image from "next/legacy/image";
+import Image from "next/image";
 type Props = {
   menuShow: boolean;
   setMenuShow: any;
@@ -42,7 +42,7 @@ const Menu = (props: Props) => {
               }
             >
               <Link href={item.url} className="block">
-                <a> {item.name}</a>
+               {item.name}
               </Link>
             </li>
           ))}
@@ -69,7 +69,7 @@ const Menu = (props: Props) => {
             {menuName.map((item) => (
               <li key={item.name} className="py-2 ">
                 <Link href={item.url} className="block">
-                  <a> 菜单{item.name}</a>
+                   菜单{item.name}
                 </Link>
               </li>
             ))}
