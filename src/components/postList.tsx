@@ -18,7 +18,7 @@ export const PostList = ({ allPostsData }: any) => {
             } `}
           >
             <div className="sm:w-2/6 h-48 sm:h-32 relative">
-              <Link href={"/post" + item.id}>
+              <Link href={"/post/" + item.id}>
                 <Image
                   className={"object-cover"}
                   alt="文章封面"

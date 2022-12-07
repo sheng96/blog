@@ -1,21 +1,22 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
-import dayjs from 'dayjs'
 import { Divider } from 'antd';
+import $request from "@/utils/http/axios"
 
 import { NavBar } from "@/components/navBar";
 import {PostList} from "@/components/postList";
 
 export async function getStaticProps() {
-  const allPostsData = await fetch("https://api.pengyang.plus/webApi/post").then(
-    (r) => r.json()
-  );
-    console.log(allPostsData)
+    const data=await $request.get('/post');
+    // console.log(data)
+  // const allPostsData = await fetch(process.env.NEXT_PUBLIC_API+"/post").then(
+  //   (r) => r.json()
+  // );
+
 
   return {
     props: {
-      allPostsData: allPostsData,
+      allPostsData: data,
     },
   };
 }
@@ -28,9 +29,9 @@ const Home: NextPage = ({ allPostsData }: any) => {
       </Head>
       <NavBar />
 
-      <main className="sm:w-4/5  m-auto  mt-3 flex">
+      <main className="sm:w-4/5  m-auto  mt-3 flex ">
           <PostList allPostsData={allPostsData} ></PostList>
-          <div className={'bg-blue-600 w-1/5 hidden lg:block'}>assssssssssssssssssssss</div>
+          <div className={'bg-blue-600 w-1/5 hidden  lg:block'}>重视大得多能放得开</div>
       </main>
     </div>
   );

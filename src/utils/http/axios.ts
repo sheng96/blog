@@ -3,7 +3,7 @@ import axios from 'axios'
 import { checkStatus } from '@/utils/http/checkStatus'
 
 const instance = axios.create({
-  baseURL: '',
+  baseURL: process.env.NEXT_PUBLIC_API,
   timeout: 10000
 })
 instance.interceptors.request.use(
