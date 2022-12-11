@@ -6,14 +6,14 @@ import Image from "next/image";
 import dayjs from "dayjs";
 import style from "@/styles/postList.module.css";
 
-export const PostList = ({ allPostsData }: any) => {
+export const PostList = ({ allPostsData,className }: any) => {
   return (
-    <ul className={"w-full"}>
+    <ul className={`w-full ${className}`}>
       {allPostsData.data.map((item: any, index: number) => {
         return (
           <li
             key={item.id}
-            className={`bg-white m-2 p-4 rounded-lg sm:flex justify-between items-center ${
+            className={`bg-white mx-2 mb-6 p-4 rounded-lg sm:flex justify-between items-center shadow ${
               index % 2 ? "sm:flex-row-reverse" : ""
             } `}
           >
