@@ -1,0 +1,30 @@
+.detail-body {
+    width: 100%;
+
+}
+
+@media (min-width: 1000px) {
+  .detail-body {
+      width: 1024px;
+    .markdown{
+      width: 700px;
+    }
+  }
+}
+
+.markdown{
+  width: 100%;
+  ul {
+    li{
+      list-style: disc;
+    }
+  }
+  ol{
+    li{
+      list-style: decimal;
+    }
+  }
+  pre{
+    padding: 0;
+  }
+}
