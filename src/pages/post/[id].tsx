@@ -1,14 +1,14 @@
 import { useRouter } from "next/router";
 import $request from "@/utils/http/axios";
-import ReactMarkdown from "react-markdown";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { vscDarkPlus } from "react-syntax-highlighter/dist/cjs/styles/prism";
-import remarkGfm from "remark-gfm";
-import remarkBreaks from 'remark-breaks'
-import MarkdownNavbar from 'markdown-navbar';
-// The default style of markdown-navbar should be imported additionally
-import 'markdown-navbar/dist/navbar.css';
-import 'github-markdown-css/github-markdown.css'
+import Image from "next/image";
+import MarkdownNavbar from "markdown-navbar";
+import "markdown-navbar/dist/navbar.css";
+import MarkdownToHtml from "@/components/MarkdowmToHtml";
+import style from "../../styles/postDetail.module.scss";
+import dayjs from "dayjs";
+import { Anchor } from "antd";
+import { Layout } from "@/components/Layout";
+import Head from "next/head";
 
 export async function getStaticPaths() {
   // Call an external API endpoint to get posts
@@ -20,8 +20,6 @@ export async function getStaticPaths() {
     params: { id: post.id },
   }));
 
-  // We'll pre-render only these paths at build time.
-  // { fallback: false } means other routes should 404.
   return { paths, fallback: "blocking" };
 }
 
@@ -35,42 +33,56 @@ export async function getStaticProps({ params }: any) {
   };
 }
 
-const Post = ({ detail }: any) => {
-  const router = useRouter();
-  const { id } = router.query;
+const Article = ({ detail }: any) => {
   return (
-    <div className="markdown-body m-auto px-10 md:px-0 md:w-2/3 w-full">
-      <ReactMarkdown
-        remarkPlugins={[remarkGfm,remarkBreaks]}
-        components={{
-          code({ node, inline, className, children, ...props }) {
-            const match = /language-(\w+)/.exec(className || "");
-            return !inline && match ? (
-              <SyntaxHighlighter
-                style={vscDarkPlus as any}
-                showLineNumbers={true}
-                language={match[1]}
-                PreTag="div"
-                {...props}
-              >
-                {String(children).replace(/\n$/, "")}
-              </SyntaxHighlighter>
-            ) : (
-              <code className={className} {...props}>
-                {children}
-              </code>
-            );
-          },
-        }}
-      >
-        {detail.content}
-      </ReactMarkdown>
-      <div className="navigation">
-        <MarkdownNavbar source={detail.content} />
-      </div>
-      {/*<div dangerouslySetInnerHTML={{__html:detail.contentHtml}} ></div>*/}
-    </div>
+    <>
+      <Head>
+        <title>{detail.title}</title>
+      </Head>
+      <Layout content={Post(detail)}></Layout>
+    </>
   );
 };
 
-export default Post;
+const Post = (detail: any) => {
+  return (
+    <main
+      className={`${style["detail-body"]} justify-between items-start flex m-auto px-10 md:px-0 `}
+    >
+      <div
+        className={
+          " border-2 border-indigo-600 p-4 markdown-body " + style.markdown
+        }
+      >
+        <h1>{detail.title}</h1>
+        <div className={`flex item-center text-neutral-400 text-sm mb-10`}>
+          <Image
+            src={detail.user.avatar}
+            alt={detail.user.userName}
+            className={"rounded-full"}
+            width={30}
+            height={30}
+          ></Image>
+          <div className={`ml-2`}>
+            <span>{detail.user.userName}</span>
+            <div>
+              <time dateTime={detail.creatTime}>
+                {dayjs(detail.creatTime).format("YYYY-MM-DD HH:mm")}
+              </time>
+              <span className={`mx-3`}>|</span>
+              <span>标签</span>
+            </div>
+          </div>
+        </div>
+        <MarkdownToHtml content={detail.content}></MarkdownToHtml>
+      </div>
+
+      <Anchor className={`bg-white navigation w-72 bg-white hidden sm:block`}>
+        <MarkdownNavbar source={detail.content} />
+      </Anchor>
+      {/*<div dangerouslySetInnerHTML={{__html:detail.contentHtml}} ></div>*/}
+    </main>
+  );
+};
+
+export default Article;
