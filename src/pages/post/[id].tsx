@@ -9,6 +9,7 @@ import dayjs from "dayjs";
 import { Anchor } from "antd";
 import { Layout } from "@/components/Layout";
 import Head from "next/head";
+import {useEffect} from "react";
 
 export async function getStaticPaths() {
   // Call an external API endpoint to get posts
@@ -17,14 +18,13 @@ export async function getStaticPaths() {
 
   // Get the paths we want to pre-render based on posts
   const paths = posts.map((post) => ({
-    params: { id: post.id },
+    params: { id: post.id.toString() }, //id类型必须为字符串
   }));
-
   return { paths, fallback: "blocking" };
 }
 
 export async function getStaticProps({ params }: any) {
-  const data = await $request.get(`/post/${params.id}`);
+  const data = await $request.get(`/post/${+params.id}`);
   return {
     props: {
       detail: data,
@@ -34,6 +34,13 @@ export async function getStaticProps({ params }: any) {
 }
 
 const Article = ({ detail }: any) => {
+  const router = useRouter()
+  const { pid } = router.query
+  useEffect(()=>{
+    $request.patch(`/post/${router.query.id}`).then(r=>{
+      console.log(r)
+    })
+  },[])
   return (
     <>
       <Head>
@@ -56,13 +63,15 @@ const Post = (detail: any) => {
       >
         <h1>{detail.title}</h1>
         <div className={`flex item-center text-neutral-400 text-sm mb-10`}>
-          <Image
-            src={detail.user.avatar}
-            alt={detail.user.userName}
-            className={"rounded-full"}
-            width={30}
-            height={30}
-          ></Image>
+          {detail.user?.avatar?
+            <Image
+                src={detail.user.avatar}
+                alt={detail.user.userName}
+                className={"rounded-full"}
+                width={30}
+                height={30}
+            ></Image>:null
+          }
           <div className={`ml-2`}>
             <span>{detail.user.userName}</span>
             <div>
