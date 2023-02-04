@@ -15,11 +15,11 @@ const menuName: {
     name: "首页",
     url: "/",
   },
-  { name: "标签", url: "/tag" },
-  {
-    name: "分类",
-    url: "/category",
-  },
+  // { name: "标签", url: "/tag" },
+  // {
+  //   name: "分类",
+  //   url: "/category",
+  // },
   {
     name: "时间线",
     url: "/timeline",

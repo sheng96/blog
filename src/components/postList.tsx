@@ -6,7 +6,7 @@ import Image from "next/image";
 import dayjs from "dayjs";
 import style from "@/styles/postList.module.css";
 
-export const PostList = ({ allPostsData,className }: any) => {
+export const PostList = ({ allPostsData, className }: any) => {
   return (
     <ul className={`w-full ${className}`}>
       {allPostsData.data.map((item: any, index: number) => {
@@ -32,14 +32,18 @@ export const PostList = ({ allPostsData,className }: any) => {
                 index % 2 ? "" : "ml-2"
               }`}
             >
-              <h2 className={"text-lg font-bold sm:text-2xl sm:h-2/6"}>{item.title}</h2>
+              <Link href={"/post/" + item.id}>
+                <h2 className={"text-lg font-bold sm:text-2xl sm:h-2/6"}>
+                  {item.title}
+                </h2>
+              </Link>
               <p
-                className={`sm:text-base text-gray-500 text-sm sm:mt-0 mt-3 h-3/6 hidden sm:block ${style["text-line-clamp"]}`}
+                className={`sm:text-base text-gray-500 text-sm sm:mt-0 mt-3  hidden sm:block ${style["text-line-clamp"]}`}
               >
                 {item.summary}
               </p>
               <div
-                className={`text-sm sm:mt-0 mt-3 sm:h-1/6 text-xs flex items-end`}
+                className={`text-gray-400 sm:mt-0 mt-3 sm:mt-4 sm:h-1/6 text-xs flex items-end`}
               >
                 <span> {dayjs(item.creatTime).format("YYYY-MM-DD HH:mm")}</span>
                 <Divider type="vertical" />
