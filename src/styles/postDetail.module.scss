@@ -1,16 +1,40 @@
 .detail-body {
     width: 100%;
-
 }
-
-@media (min-width: 1000px) {
+.contents{
+  display: none;
+}
+@media (min-width: 800px) {
   .detail-body {
-      width: 1024px;
+    //width: 800px;
+    background: aqua;
     .markdown{
-      width: 700px;
+      flex:1 1 auto;
+    }
+    .contents{
+      background: #373a47;
+      overflow: hidden;
+      display: block;
+      flex:0 0  auto;
+      width: 300px;
     }
   }
 }
+@media (min-width: 1200px) {
+  .detail-body {
+    width: 1180px;
+    background: deeppink;
+    border:1px solid red;
+    .markdown{
+      width:90%;
+    }
+    //.contents{
+    //  width: 300px;
+    //}
+
+  }
+}
+
 
 .markdown{
   width: 100%;
