@@ -1,12 +1,9 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { Divider } from "antd";
 import $request from "@/utils/http/axios";
-import { Avatar, Image } from "antd";
-
-import { NavBar } from "@/components/navBar";
+import { Avatar } from "antd";
 import { PostList } from "@/components/postList";
-import { Layout } from "@/components/Layout";
+import { Layout } from "@/components/layout";
 import styles from "@/styles/index.module.scss";
 
 export async function getStaticProps() {

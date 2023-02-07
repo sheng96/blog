@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { MenuOutlined } from "@ant-design/icons";
-import { Button, Drawer } from "antd";
+import { Drawer } from "antd";
 import Link from "next/link";
 import Image from "next/image";
 type Props = {
@@ -15,11 +15,6 @@ const menuName: {
     name: "首页",
     url: "/",
   },
-  // { name: "标签", url: "/tag" },
-  // {
-  //   name: "分类",
-  //   url: "/category",
-  // },
   {
     name: "时间线",
     url: "/timeline",
@@ -65,11 +60,11 @@ const Menu = (props: Props) => {
           />
         </div>
         <nav>
-          <ul className='divide-y-4 divide-yellow-600 divide-dashed'>
+          <ul className='divide-y-2 divide-gray-300 divide-dashed'>
             {menuName.map((item) => (
               <li key={item.name} className="py-2 ">
                 <Link href={item.url} className="block">
-                   菜单{item.name}
+                   {item.name}
                 </Link>
               </li>
             ))}
