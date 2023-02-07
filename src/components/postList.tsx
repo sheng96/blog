@@ -1,6 +1,5 @@
-import { useState } from "react";
-import { MenuOutlined } from "@ant-design/icons";
-import { Button, Divider, Drawer } from "antd";
+
+import {  Divider } from "antd";
 import Link from "next/link";
 import Image from "next/image";
 import dayjs from "dayjs";
@@ -33,7 +32,7 @@ export const PostList = ({ allPostsData, className }: any) => {
               }`}
             >
               <Link href={"/post/" + item.id}>
-                <h2 className={"text-lg font-bold sm:text-2xl sm:h-2/6"}>
+                <h2 className={"text-lg truncate font-bold sm:text-2xl sm:h-2/6"}>
                   {item.title}
                 </h2>
               </Link>
