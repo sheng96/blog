@@ -7,9 +7,9 @@ import MarkdownToHtml from "@/components/MarkdowmToHtml";
 import style from "../../styles/postDetail.module.scss";
 import dayjs from "dayjs";
 import { Anchor } from "antd";
-import { Layout } from "@/components/Layout";
+import { Layout } from "@/components/layout";
 import Head from "next/head";
-import {useEffect} from "react";
+import { useEffect } from "react";
 
 export async function getStaticPaths() {
   // Call an external API endpoint to get posts
@@ -34,13 +34,13 @@ export async function getStaticProps({ params }: any) {
 }
 
 const Article = ({ detail }: any) => {
-  const router = useRouter()
-  const { pid } = router.query
-  useEffect(()=>{
-    $request.patch(`/post/${router.query.id}`).then(r=>{
-      console.log(r)
-    })
-  },[])
+  const router = useRouter();
+  const { pid } = router.query;
+  useEffect(() => {
+    $request.patch(`/post/${router.query.id}`).then((r) => {
+      console.log(r);
+    });
+  }, []);
   return (
     <>
       <Head>
@@ -54,24 +54,20 @@ const Article = ({ detail }: any) => {
 const Post = (detail: any) => {
   return (
     <main
-      className={`${style["detail-body"]} justify-between items-start flex m-auto px-10 md:px-0 `}
+      className={`${style["detail-body"]} justify-between items-start flex m-auto  md:px-0 `}
     >
-      <div
-        className={
-          " border-2 border-indigo-600 p-4 markdown-body " + style.markdown
-        }
-      >
+      <div className={" border-2  p-4 markdown-body " + style.markdown}>
         <h1>{detail.title}</h1>
         <div className={`flex item-center text-neutral-400 text-sm mb-10`}>
-          {detail.user?.avatar?
+          {detail.user?.avatar ? (
             <Image
-                src={detail.user.avatar}
-                alt={detail.user.userName}
-                className={"rounded-full"}
-                width={30}
-                height={30}
-            ></Image>:null
-          }
+              src={detail.user.avatar}
+              alt={detail.user.userName}
+              className={"rounded-full"}
+              width={30}
+              height={30}
+            ></Image>
+          ) : null}
           <div className={`ml-2`}>
             <span>{detail.user.userName}</span>
             <div>
@@ -86,9 +82,13 @@ const Post = (detail: any) => {
         <MarkdownToHtml content={detail.content}></MarkdownToHtml>
       </div>
 
-      <Anchor className={`bg-white navigation w-72 bg-white hidden sm:block`}>
-        <MarkdownNavbar source={detail.content} />
-      </Anchor>
+      <div  className={` w-72   ${style.contents}`}>
+        <Anchor
+          className={`bg-white navigation`}
+        >
+          <MarkdownNavbar source={detail.content} />
+        </Anchor>
+      </div>
       {/*<div dangerouslySetInnerHTML={{__html:detail.contentHtml}} ></div>*/}
     </main>
   );
