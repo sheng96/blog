@@ -82,7 +82,7 @@ const Post = (detail: any) => {
         <MarkdownToHtml content={detail.content}></MarkdownToHtml>
       </div>
 
-      <div  className={` w-72   ${style.contents}`}>
+      <div  className={` ${style.contents}`}>
         <Anchor
           className={`bg-white navigation`}
         >
