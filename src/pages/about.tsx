@@ -1,4 +1,4 @@
-import { Layout } from "@/components/layout";
+import { Layout } from "@/components/Layout";
 import style from '../styles/about.module.scss'
 const About = () => {
   return <Layout content={Content()}></Layout>;

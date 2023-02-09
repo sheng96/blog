@@ -3,7 +3,7 @@ import Head from "next/head";
 import $request from "@/utils/http/axios";
 import { Avatar } from "antd";
 import { PostList } from "@/components/postList";
-import { Layout } from "@/components/layout";
+import { Layout } from "@/components/Layout";
 import styles from "@/styles/index.module.scss";
 
 export async function getStaticProps() {
