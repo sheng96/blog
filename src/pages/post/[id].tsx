@@ -7,7 +7,7 @@ import MarkdownToHtml from "@/components/MarkdowmToHtml";
 import style from "../../styles/postDetail.module.scss";
 import dayjs from "dayjs";
 import { Anchor } from "antd";
-import { Layout } from "@/components/layout";
+import { Layout } from "@/components/Layout";
 import Head from "next/head";
 import { useEffect } from "react";
 
