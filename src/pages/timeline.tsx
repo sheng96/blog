@@ -17,7 +17,7 @@ const FC = () => {
               <>
                 <div className={`text-base text-gray-500 font-bold`}>2023-02-11</div>
                 <p
-                  className={`bg-slate-500 rounded w-96 shadow-2xl text-white p-3 mt-2`}
+                  className={`bg-slate-500 rounded  shadow-2xl text-white p-3 mt-2`}
                 >
                  添加日志页面和关于页面
                 </p>
@@ -29,7 +29,7 @@ const FC = () => {
               <>
                 <div className={`text-base text-gray-500 font-bold`}>2022-11-06</div>
                 <p
-                  className={`bg-slate-500 rounded w-96 shadow-2xl text-white p-3 mt-2`}
+                  className={`bg-slate-500 rounded  shadow-2xl text-white p-3 mt-2`}
                 >
                   博客上线
                 </p>
