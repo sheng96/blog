@@ -7,7 +7,6 @@
 @media (min-width: 900px) {
   .detail-body {
     //width: 800px;
-    background: aqua;
     .markdown{
       overflow: hidden;
       flex-grow: 1;
@@ -24,8 +23,6 @@
 @media (min-width: 1200px) {
   .detail-body {
     width: 1180px;
-    background: deeppink;
-    border:1px solid red;
     .markdown{
       flex-grow: 0;
       width:90%;
@@ -52,5 +49,36 @@
   }
   pre{
     padding: 0;
+  }
+  :global(.task-list-item){
+    display: flex;
+    align-items: center;
+  }
+  input[type=checkbox]{
+    margin-right: 0.5rem;
+    cursor: pointer;
+    position: relative;
+    width: 13px;
+    height: 13px;
+  }
+
+  input[type=checkbox]::after{
+    position: absolute;
+    top: 0;
+    width: 13px;
+    height: 13px;
+    line-height: 13px;
+    display: inline-block;
+    visibility: visible;
+    text-align: center;
+    content: ' ';
+  }
+
+  input[type=checkbox]:checked::after{
+    content: "✓";
+    background: #62a4da;
+    color: #fff;
+    font-size: 10px;
+    font-weight: bold;
   }
 }
