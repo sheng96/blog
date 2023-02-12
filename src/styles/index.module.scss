@@ -1,0 +1,24 @@
+@media (min-width: 640px) {
+}
+
+
+
+@media (min-width: 768px) {
+  .main {
+    width: 768px;
+
+    .post-list {
+      margin: 0 auto;
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .main {
+    width: 1000px;
+
+    .post-list {
+      width: 710px;
+    }
+  }
+}

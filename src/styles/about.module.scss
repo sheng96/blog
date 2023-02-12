@@ -1,0 +1,27 @@
+.about_html{
+  p{
+    margin-top:1.5rem
+  }
+  code {
+    background-color: #b4eeea;
+    background-color: var(--inlineCode, #a7e7df);
+    border-radius: 8px;
+    font-family: dengxian;
+    margin: 0 2px;
+    padding: 3px 8px
+  }
+  blockquote {
+    background-color: #163633;
+    background-color: var(--themeColor1,#163633);
+    border: 2px dashed #62a4da;
+    border: 2px dashed var(--hoverColor,#62a4da);
+    border-radius: 20px;
+    font-size: 18px;
+    padding: 14px 40px
+  }
+  li{
+    list-style: disc;
+    margin-left: 1.5rem;
+    margin-top: 0.5rem;
+  }
+}
