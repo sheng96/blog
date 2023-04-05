@@ -4,7 +4,7 @@
  * @param local
  * @returns {string}
  */
-export default function formatDate (date, local) {
+export default function formatDate (date:string, local:string) {
   if (!date) return ''
   const d = new Date(date)
   const options = { year: 'numeric', month: 'short', day: 'numeric' }
@@ -14,7 +14,7 @@ export default function formatDate (date, local) {
     : res
 }
 
-export function formatDateFmt (timestamp, fmt) {
+export function formatDateFmt (timestamp:any, fmt:any) {
   const date = new Date(timestamp)
   const o = {
     'M+': date.getMonth() + 1, // 月份
