@@ -4,10 +4,13 @@
 import http from '@/utils/http/axios'
 // import { statusEnum } from '@/api/model/postModel'
 import { BasicPageParams } from '@/api/model/baseModel'
+import {PostDetailModel, PostListModel} from "@/api/model/postModel";
 
-export const postAllApi = async (params: BasicPageParams = {}) =>
-    await http.get('/api/post', {
+export const postAllApi = async (params: BasicPageParams = {}):Promise<PostListModel> =>
+    await http.get('/post', {
       params
     })
+export const PostDetail = async (id:number):Promise<PostDetailModel> =>
+    await http.get(`/post/${id}`, )
 
 
