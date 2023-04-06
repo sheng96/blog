@@ -6,7 +6,7 @@ import { postAllApi } from "@/api/post";
 import { PostList } from "@/api/model/postModel";
 
 export async function getStaticProps() {
-  const data = await postAllApi();
+  const {data} = await postAllApi();
   return {
     props: {
       posts: data.data,
