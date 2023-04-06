@@ -15,11 +15,10 @@ import {postAllApi, PostDetail} from "@/api/post";
 
 export async function getStaticPaths() {
   // Call an external API endpoint to get posts
-  const res = await postAllApi();
-  const posts =  res.data ;
+  const {data} = await postAllApi();
+  const posts =  data.data ;
   // Get the paths we want to pre-render based on posts
   const paths = posts.map((post) => {
-    console.log(post.id)
     return ({
       params: { id: post.id.toString() }, //id类型必须为字符串
     })
@@ -28,7 +27,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }: any) {
-  const data = await PostDetail(params.id*1);
+  const {data} = await PostDetail(params.id*1);
   return {
     props: {
       detail: data,

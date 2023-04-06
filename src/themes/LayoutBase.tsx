@@ -1,15 +1,9 @@
 import TopNav from "./components/TopNav";
 import BLOG from "../../blog.config";
-import { PostList } from "@/api/model/postModel";
 import React, {ReactNode} from "react";
 import SideRight from "@/themes/components/SideRight";
-interface Props {
-  posts: PostList[];
-  headerSlot: false | JSX.Element;
-  children?: React.ReactNode;
-}
-const LayoutBase = (props: Props) => {
-  console.log(props);
+
+const LayoutBase = (props: any) => {
   return (
     <>
       <TopNav></TopNav>
