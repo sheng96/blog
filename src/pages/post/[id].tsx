@@ -39,11 +39,7 @@ export async function getStaticProps({ params }: any) {
 const Article = ({ detail }: any) => {
   const router = useRouter();
   const { pid } = router.query;
-  useEffect(() => {
-    $request.get(`/post/${router.query.id}`).then((r) => {
-      console.log(r);
-    });
-  }, []);
+ 
   return <LayoutPost detail={detail} />
   // return (
   //   // <>
