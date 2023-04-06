@@ -1,5 +1,5 @@
 // import { generateLocaleDict, initLocale } from './lang'
-import {
+import React, {
   createContext,
   useContext,
   useEffect,
@@ -9,12 +9,22 @@ import {
 import Router from "next/router";
 import BLOG from "blog.config";
 import { initDarkMode, initTheme, saveThemeToCookies } from "@/lib/theme";
+import {CalendarOutlined, LinkOutlined, SearchOutlined, SmileOutlined} from "@ant-design/icons";
+import THEME_CONFIG from "@/themes/theme_config";
 // import { ALL_THEME } from '@/themes'
 interface Context {
   onLoading: boolean;
   changeLoadingState: (k: boolean) => boolean;
   isDarkMode: boolean;
   updateDarkMode: (k: boolean) => boolean;
+  links: Link[];
+}
+interface Link {
+  icon: any;
+  name: string;
+  to: string;
+  show: boolean;
+  slot?: any
 }
 const GlobalContext = createContext({});
 
@@ -45,27 +55,37 @@ export function GlobalContextProvider({ children }: ComponentProps<any>) {
     changeLoadingState(false);
   });
 
-  // function switchTheme() {
-  //     const currentIndex = ALL_THEME.indexOf(theme)
-  //     const newIndex = currentIndex < ALL_THEME.length - 1 ? currentIndex + 1 : 0
-  //     const newTheme = ALL_THEME[newIndex]
-  //     changeTheme(newTheme)
-  //     return newTheme
-  // }
-
-  // function changeTheme(theme) {
-  //     Router.query.theme = ''
-  //     if (ALL_THEME.indexOf(theme) > -1) {
-  //         setTheme(theme)
-  //     } else {
-  //         setTheme(BLOG.THEME)
-  //     }
-  //     saveThemeToCookies(theme)
-  // }
+  //菜单栏
+  const links:Link[] = [
+    {
+      icon: <SearchOutlined />,
+      name: "搜索",
+      to: "/search",
+      show: THEME_CONFIG.MENU_SEARCH,
+    },
+    {
+      icon: <CalendarOutlined />,
+      name: "归档",
+      to: "/archive",
+      show: THEME_CONFIG.MENU_ARCHIVE,
+    },
+    {
+      icon: <LinkOutlined />,
+      name: "友链",
+      to: "/links",
+      show: true,
+    },
+    {
+      icon: <SmileOutlined />,
+      name: "关于我",
+      to: "/about",
+      show: true,
+    },
+  ];
 
   return (
     <GlobalContext.Provider
-      value={{ onLoading, changeLoadingState, isDarkMode, updateDarkMode }}
+      value={{ onLoading, changeLoadingState, isDarkMode, updateDarkMode,links }}
     >
       {children}
     </GlobalContext.Provider>

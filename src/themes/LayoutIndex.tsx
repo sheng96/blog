@@ -10,10 +10,7 @@ export const LayoutIndex = (props: { posts: PostList[] }) => {
   const headerSlot = THEME_CONFIG.HOME_BANNER_ENABLE && <Header {...props} />;
   return (
     <LayoutBase {...props} headerSlot={headerSlot}>
-      <>
-        {() => JSON.stringify(BlogPostListScroll)}
-        <BlogPostListScroll {...props} />
-      </>
+      <BlogPostListScroll {...props} />
     </LayoutBase>
   );
 };
