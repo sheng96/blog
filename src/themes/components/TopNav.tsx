@@ -17,14 +17,12 @@ let windowTop = 0;
 
 /**
  * 顶部导航
- * @param {*} param0
  * @returns
+ * @param props
  */
 const TopNav = (props:any) => {
   const searchDrawer = useRef();
   const { tags, currentTag, categories, currentCategory } = props;
-  // const { locale } = useGlobal();
-    const locale='zh-CN'
     // const isDarkMode='isDarkMode'
   const { isDarkMode } = useGlobal();
   const router = useRouter();
@@ -160,14 +158,17 @@ const TopNav = (props:any) => {
       >
         <div className="w-full flex justify-between items-center px-4 py-2">
           <div className="flex">
+            {/*  顶部左侧标题*/}
             <Logo {...props} />
           </div>
 
           {/* 右侧功能 */}
           <div className="mr-1 justify-end items-center ">
             <div className="hidden lg:flex">
+              {/*  右侧菜单*/}
               <MenuButtonGroupTop {...props} />
             </div>
+            {/*  点击控制菜单弹框是否打开 */}
             <div
               onClick={toggleMenuOpen}
               className="w-8 justify-center items-center h-8 cursor-pointer flex lg:hidden"
@@ -185,7 +186,7 @@ const TopNav = (props:any) => {
 
         <Collapse type="vertical" isOpen={isOpen} className="shadow-xl">
           <div className="bg-white dark:bg-hexo-black-gray pt-1 py-2 px-5 lg:hidden ">
-            <MenuList {...props} />
+            <MenuList  />
           </div>
         </Collapse>
       </div>

@@ -1,6 +1,6 @@
 import Card from './Card'
 
-export function AnalyticsCard (props) {
+export function AnalyticsCard (props:any) {
     const { postCount } = props
     return <Card>
         <div className='ml-2 mb-3 '>

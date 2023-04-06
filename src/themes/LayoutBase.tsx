@@ -1,8 +1,11 @@
 import TopNav from "./components/TopNav";
 import BLOG from "../../blog.config";
-import React, {ReactNode} from "react";
+import React from "react";
 import SideRight from "@/themes/components/SideRight";
-
+/**
+ *  这是一个基础的布局，用于展示博客的主要内容
+ *
+ * */
 const LayoutBase = (props: any) => {
   return (
     <>
