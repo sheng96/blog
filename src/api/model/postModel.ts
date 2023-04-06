@@ -23,7 +23,16 @@ export interface PostList {
   tags: string[];
   user: User;
 }
+export interface archive {
+  [key: string]: {
+    id: number;
+    title: string;
+    creatTime: string;
+  }[]
+}
 
-export type PostListModel = PagesModel<PostList>;
+export type PostListModel = PagesBaseModel<PostList>;
 
 export type PostDetailModel = BaseModel<PostList>;
+
+export type ArchiveModel = BaseModel<archive>;
