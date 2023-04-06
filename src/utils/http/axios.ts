@@ -30,7 +30,6 @@ instance.interceptors.response.use(
   // 超出 2xx 范围的状态码都会触发该函数。
   // 对响应错误做点什么
   (error) => {
-    console.log(error)
     const response = error.response
     if (response.status >= 400) {
       const data = response?.data

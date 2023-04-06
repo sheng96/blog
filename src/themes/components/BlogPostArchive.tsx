@@ -19,7 +19,7 @@ interface Props {
     archiveTitle: string;
 }
 const BlogPostArchive = ({ posts = [], archiveTitle }:Props) => {
-    console.log(posts,'-------')
+    
   if (!posts || posts.length === 0) {
     return <></>;
   } else {
