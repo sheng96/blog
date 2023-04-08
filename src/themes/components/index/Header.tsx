@@ -1,5 +1,5 @@
 // import Image from 'next/image'
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Typed from "typed.js";
 import THEME_CONFIG from "@/themes/theme_config";
 import NavButtonGroup from "./NavButtonGroup";
@@ -14,27 +14,32 @@ const enableAutoScroll = false; // 是否开启自动吸附滚动
  *
  * @returns 头图
  */
-const Header = (props:any) => {
-  const [typed, changeType] = useState<any>();
+const Header = (props: any) => {
+  const typed = useRef<any>(null);
+  console.log(typed);
   // const { siteInfo } = props;
-  const siteInfo={
-    "title": "Notion Blog",
-    "description": "一个NotionNext搭建的博客",
-    "pageCover": "https://www.notion.so/images/page-cover/nasa_robert_stewart_spacewalk_2.jpg",
-    "icon": "https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fd52f6766-3e32-4c3d-8529-46e1f214360f%2Ffavicon.svg?table=collection&id=4379bc14-5d22-453b-a153-12639616fc01"
-  }
+  const siteInfo = {
+    title: "Notion Blog",
+    description: "一个NotionNext搭建的博客",
+    pageCover:
+      "https://www.notion.so/images/page-cover/nasa_robert_stewart_spacewalk_2.jpg",
+    icon: "https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fd52f6766-3e32-4c3d-8529-46e1f214360f%2Ffavicon.svg?table=collection&id=4379bc14-5d22-453b-a153-12639616fc01",
+  };
+  let newTyped = false;
   useEffect(() => {
     updateHeaderHeight();
-
-    if (!typed && window && document.getElementById("typed")) {
-      changeType(new Typed("#typed", {
+    if (!newTyped && window && typed.current) {
+      // changeType(()=>{
+      new Typed(typed.current, {
         strings: THEME_CONFIG.HOME_BANNER_GREETINGS,
         typeSpeed: 200,
         backSpeed: 100,
         backDelay: 400,
         showCursor: true,
         smartBackspace: true,
-      }));
+      });
+      newTyped = true;
+      // });
     }
 
     if (enableAutoScroll) {
@@ -49,7 +54,7 @@ const Header = (props:any) => {
       }
       window.removeEventListener("resize", updateHeaderHeight);
     };
-  });
+  }, []);
 
   function updateHeaderHeight() {
     requestAnimationFrame(() => {
@@ -73,10 +78,7 @@ const Header = (props:any) => {
 
       const scrollS = window.scrollY;
       // 自动滚动
-      if (
-        (scrollS > windowTop) && (scrollS < window.innerHeight) &&
-        !autoScroll
-      ) {
+      if (scrollS > windowTop && scrollS < window.innerHeight && !autoScroll) {
         autoScroll = true;
         window.scrollTo({ top: wrapperTop, behavior: "smooth" });
         autoScrollEnd();
@@ -87,7 +89,8 @@ const Header = (props:any) => {
         autoScrollEnd();
       }
       windowTop = scrollS;
-    }, throttleMs),[]
+    }, throttleMs),
+    []
   );
 
   return (
@@ -117,7 +120,7 @@ const Header = (props:any) => {
           {siteInfo?.title}
         </div>
         <div className="mt-2 h-12 items-center text-center shadow-text text-white text-lg">
-          <span id="typed" />
+          <span id="typed" ref={typed} />
         </div>
 
         {/* 首页导航插件 */}

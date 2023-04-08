@@ -1,5 +1,4 @@
-import BLOG from "blog.config";
-// import NotionPage from '@/components/NotionPage'
+import BLOG from "../../../../blog.config";
 import Link from "next/link";
 import TagItemMini from "./TagItemMini";
 import { PostList } from "@/api/model/postModel";
@@ -23,7 +22,7 @@ export const BlogPostCardInfo = ({
   showPageCover,
   showSummary,
 }: Props) => {
-  post.tagItems = [
+  const tagItems = [
     {
       name: "建站",
       color: "gray",
@@ -119,7 +118,7 @@ export const BlogPostCardInfo = ({
           {/*  {post?.category||'未分类'}*/}
           {/*</Link>*/}
           <div className="md:flex-nowrap flex-wrap md:justify-start inline-block">
-              {post.tagItems.map((tag: any) => (
+              {tagItems.map((tag: any) => (
                 <TagItemMini key={tag.name} tag={tag} />
               ))}
           </div>

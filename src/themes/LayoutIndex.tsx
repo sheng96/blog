@@ -1,9 +1,9 @@
 import BLOG from "blog.config";
-import Header from "./components/Header";
+import Header from "./components/index/Header";
 import THEME_CONFIG from "@/themes/theme_config";
 import { LayoutBase } from "./LayoutBase";
 import React from "react";
-import BlogPostListScroll from "./components/BlogPostListScroll";
+import BlogPostListScroll from "./components/index/BlogPostListScroll";
 import { PostList } from "@/api/model/postModel";
 
 export const LayoutIndex = (props: { posts: PostList[] }) => {

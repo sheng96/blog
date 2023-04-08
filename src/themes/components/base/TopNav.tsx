@@ -5,7 +5,7 @@ import CategoryGroup from "./CategoryGroup";
 // import Collapse from "./Collapse";
 import Logo from "./Logo";
 import {useRouter} from "next/router";
-import SearchDrawer from "./SearchDrawer";
+import SearchDrawer from "../SearchDrawer";
 import throttle from "lodash.throttle";
 import MenuButtonGroupTop from "./MenuButtonGroupTop";
 import {CloseOutlined, MenuOutlined} from "@ant-design/icons";
