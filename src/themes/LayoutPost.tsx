@@ -12,7 +12,7 @@ import {LayoutBase} from './LayoutBase'
 // import ArticleRecommend from './components/ArticleRecommend'
 import { isBrowser } from '@/lib/utils'
 import MarkdownToHtml from "@/components/MarkdowmToHtml";
-import HeaderArticle from "@/themes/components/HeaderArticle";
+import HeaderArticle from "@/themes/components/post/HeaderArticle";
 
 export const LayoutPost = (props:any) => {
     return (

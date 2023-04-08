@@ -1,7 +1,7 @@
-import TopNav from "./components/TopNav";
+import TopNav from "./components/base/TopNav";
 import BLOG from "../../blog.config";
 import React from "react";
-import SideRight from "@/themes/components/SideRight";
+import SideRight from "@/themes/components/base/SideRight";
 /**
  *  这是一个基础的布局，用于展示博客的主要内容
  *

@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useGlobal } from '@/lib/global'
 // import CONFIG_HEXO from '../config_hexo'
-import  THEME_CONFIG from '../theme_config'
+import  THEME_CONFIG from '../../theme_config'
 
 const MenuList = (props:any) => {
     const { postCount } = props

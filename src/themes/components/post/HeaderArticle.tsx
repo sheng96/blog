@@ -1,6 +1,5 @@
 import Link from "next/link";
-import formatDate from "@/lib/formatDate";
-import BLOG from "blog.config";
+import BLOG from "../../../../blog.config";
 import { FolderOpenFilled } from "@ant-design/icons";
 import dayjs from "dayjs";
 
@@ -11,7 +10,7 @@ export default function HeaderArticle({ detail: post }: any) {
   }
   // const headerImage = post?.page_cover ? `url("${post.page_cover}")` : `url("${siteInfo?.pageCover}")`
   const headerImage = `url("https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2Fcc6ecb1d-022d-4605-8727-e5c9677b6ffc%2F7efac00a17136024ab153e4f0ac3c2ae.jpg?table=block&id=a6271da0-6b8f-47a3-9735-e8fa770f1d9f&cache=v2")`;
-  const date = formatDate(post?.date?.start_date || post?.createdTime, "zh-CN");
+
 
   return (
     <div

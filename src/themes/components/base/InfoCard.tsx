@@ -1,6 +1,6 @@
-import BLOG from 'blog.config'
+import BLOG from '../../../../blog.config'
 import { useRouter } from 'next/router'
-import Card from './Card'
+import Card from '../Card'
 import SocialButton from './SocialButton'
 // import MenuGroupCard from './MenuGroupCard'
 export function InfoCard (props:any) {

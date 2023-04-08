@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { useGlobal } from "@/lib/global";
-import THEME_CONFIG from "../theme_config";
+import THEME_CONFIG from "../../theme_config";
 
 const MenuButtonGroupTop = (props: any) => {
   const {links} = useGlobal();

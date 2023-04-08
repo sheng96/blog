@@ -61,8 +61,7 @@ const BlogPostListScroll = (props:Props) => {
     // const { locale } = useGlobal()
 
     if (!posts || posts.length === 0) {
-        return <div>无了</div>
-        // return <BlogPostListEmpty currentSearch={currentSearch} />
+        return <BlogPostListEmpty currentSearch={currentSearch} />
     } else {
         return <div id='container' ref={targetRef} className='w-full'>
             {/* 文章列表 */}
