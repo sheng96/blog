@@ -51,7 +51,7 @@ export function checkStatus(status: number, message: string): void {
   }
 
   if (errMessage) {
-    alert(errMessage)
+    console.log(errMessage)
     // window.$message.error(errMessage)
   }
 }

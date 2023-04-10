@@ -1,4 +1,3 @@
-import Card from '../Card'
 import CategoryGroup from './CategoryGroup'
 // import LatestPostsGroup from './LatestPostsGroup'
 // import TagGroups from './TagGroups'
