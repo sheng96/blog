@@ -22,16 +22,7 @@ export const BlogPostCardInfo = ({
   showPageCover,
   showSummary,
 }: Props) => {
-  const tagItems = [
-    {
-      name: "建站",
-      color: "gray",
-    },
-    {
-      name: "文字",
-      color: "pink",
-    },
-  ];
+
 
   return (
     <div
@@ -62,7 +53,7 @@ export const BlogPostCardInfo = ({
           } flex-wrap dark:text-gray-500 text-gray-400 hover:text-indigo-700 dark:hover:text-indigo-400`}
         >
           <Link
-            href={`/archive#${post?.creatTime?.substr(0, 7)}`}
+            href={`/archive#${post?.creatTime?.substring(0, 7)}`}
             passHref
             className="font-light hover:underline cursor-pointer text-sm leading-4 mr-3"
           >
@@ -118,8 +109,8 @@ export const BlogPostCardInfo = ({
           {/*  {post?.category||'未分类'}*/}
           {/*</Link>*/}
           <div className="md:flex-nowrap flex-wrap md:justify-start inline-block">
-              {tagItems.map((tag: any) => (
-                <TagItemMini key={tag.name} tag={tag} />
+              {post.tag.map((name: string,index) => (
+                <TagItemMini key={index} tag={name} />
               ))}
           </div>
         </div>
