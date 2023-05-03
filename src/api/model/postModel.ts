@@ -20,7 +20,7 @@ export interface PostList {
   status: statusEnum;
   creatTime: string;
   updateTime: string;
-  tags: string[];
+  tag: string[];
   user: User;
 }
 export interface archive {
