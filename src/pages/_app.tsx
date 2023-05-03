@@ -1,15 +1,27 @@
-import BLOG from "blog.config";
 import type { AppProps } from "next/app";
-// import 'antd/dist/antd.css'
+import "antd/dist/reset.css";
 import "../styles/globals.css";
 import dynamic from "next/dynamic";
-import { createContext, useContext, useEffect, useState } from "react";
 import { GlobalContextProvider } from "@/lib/global";
+import { ConfigProvider } from "antd";
+import { StyleProvider } from "@ant-design/cssinjs";
+
+const Fingerprint = dynamic(() => import("@/components/Fingerprint"), {
+  ssr: false,
+});
+
 function MyApp({ Component, pageProps }: AppProps) {
+  ConfigProvider.config({
+  });
   return (
-    <GlobalContextProvider>
-      <Component {...pageProps} />
-    </GlobalContextProvider>
+    <ConfigProvider>
+      <StyleProvider hashPriority="high">
+        <GlobalContextProvider>
+          <Component {...pageProps} />
+          <Fingerprint />
+        </GlobalContextProvider>
+      </StyleProvider>
+    </ConfigProvider>
   );
 }
 
