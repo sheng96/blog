@@ -5,9 +5,11 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 First, run the development server:
 
 ```bash
+pnpm i //安装依赖
+
 npm run dev
 # or
-yarn dev
+pnpm dev
 ```
 
 ```shell
