@@ -1,8 +1,9 @@
 import { Layout } from "@/components/Layout";
 import style from "../styles/about.module.scss";
 import {Tag} from "antd";
+import {LayoutAbout} from "@/themes/LayoutAbout";
 const About = () => {
-  return <Layout content={Content()}></Layout>;
+  return <LayoutAbout></LayoutAbout>
 };
 const Content = () => {
   return (
