@@ -15,4 +15,14 @@ export const PostDetail = async (id:number):Promise<PostDetailModel> =>
 export const archiveApi = async ():Promise<ArchiveModel> =>
     await http.get(`/post/archive`, )
 
+interface SearchParams extends BasicPageParams {
+    keyword:string
+}
+
+export const searchApi = async (params:SearchParams):Promise<PostListModel> =>
+    await http.get(`/post/search`,{
+        params
+    } )
+
+
 
