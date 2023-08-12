@@ -4,7 +4,7 @@ import { checkStatus } from '@/utils/http/checkStatus'
 
 const instance = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API,
-  timeout: 10000
+  timeout: 30000
 })
 instance.interceptors.request.use(
   (config: AxiosRequestConfig) => {
