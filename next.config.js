@@ -3,8 +3,17 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ["cn.bing.com",'q2.qlogo.cn','img2.baidu.com'],
-  },
-};
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**.co'
+      },
+      {
+        protocol: 'https',
+        hostname: '**.**'
+      }
+    ]
+  }
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig
